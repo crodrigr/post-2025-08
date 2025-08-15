@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Posts ({{ posts?.length || 0 }})</h2>
+
+  <ng-container *ngIf="posts?.length; else sinDatos">
+    <ul class="post-list">
+      <li *ngFor="let p of posts; index as i" class="post-item">
+        <h3 class="post-title">{{ p.title }}</h3>
+        <p class="post-body">{{ p.body }}</p>
+        <small class="post-meta">ID: {{ p.id }} · User: {{ p.userId }}</small>
+      </li>
+    </ul>
+  </ng-container>
+
+  <ng-template #sinDatos>
+    <p>No hay posts para mostrar.</p>
+  </ng-template>
+</div>
+

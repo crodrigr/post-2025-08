@@ -1,0 +1,6 @@
+.container { padding: 1rem; }
+.post-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+.post-item { border: 1px solid #ddd; border-radius: 12px; padding: 1rem; }
+.post-title { margin: 0 0 .5rem; font-size: 1.1rem; }
+.post-body { margin: 0 0 .5rem; color: #444; }
+.post-meta { color: #777; }
