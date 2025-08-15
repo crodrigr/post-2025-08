@@ -11,44 +11,47 @@ import { CommonModule } from '@angular/common';
 })
 export class Post implements OnInit {
 
-  posts: PostModel[]=[];
+  posts: PostModel[] = [];
 
-  post: PostModel | null=null;
+  post: PostModel | null = null;
 
-  constructor(private readonly service:Postservices){
+  constructor(private readonly service: Postservices) {
 
   }
 
   ngOnInit(): void {
-      this.getPostById(1);
-      this.service.getPosts().subscribe({
-         next:data=>{
-           this.posts=data;
-           //console.log(this.posts);
-         },
-         error: err=>{
-           console.log('Error cargando post',err);
-         },
-         complete: ()=>{
-           console.log('Carga de post completada')
-         }
-      })
-
+    this.getPostById(1);
+    this.getAllPosts();
   }
 
-  getPostById(id:number){
+  getAllPosts(): void {
+    this.service.getPosts().subscribe({
+      next: data => {
+        this.posts = data;
+        //console.log(this.posts);
+      },
+      error: err => {
+        console.log('Error cargando post', err);
+      },
+      complete: () => {
+        console.log('Carga de post completada')
+      }
+    })
+  }
+
+  getPostById(id: number) {
     this.service.getPostsById(id).subscribe({
-         next:data=>{
-           this.post=data;
-           console.log(this.post);
-         },
-         error: err=>{
-           console.log('Error cargando post',err);
-         },
-         complete: ()=>{
-           console.log('Carga de post completada')
-         }
-      })
+      next: data => {
+        this.post = data;
+        console.log(this.post);
+      },
+      error: err => {
+        console.log('Error cargando post', err);
+      },
+      complete: () => {
+        console.log('Carga de post completada')
+      }
+    })
 
   }
 
